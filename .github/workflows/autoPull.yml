@@ -28,7 +28,7 @@ jobs:
           git push 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
-        if: job.status == 'success'
+        if: ${{ success() }}
         env:
           SLACK_CHANNEL: backend_portfolio_git
           SLACK_COLOR: ${{ job.status }}
@@ -38,7 +38,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
-        if: job.status == 'failure'
+        if: ${{ failure() }}
         env:
           SLACK_CHANNEL: backend_portfolio_git
           SLACK_COLOR: ${{ job.status }}
