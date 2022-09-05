@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      #  with:
-      #    ref: 'dev'
+      - uses: actions/checkout@v2
+        with:
+          token: ${{secrets.PAT}}
           
-      - name: Pull the change from main
+      - name: Pull the changes from main
         run: | 
           git fetch
           git switch dev
