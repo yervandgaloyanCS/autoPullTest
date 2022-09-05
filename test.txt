@@ -1,2 +1,0 @@
-Auto pull test.
-TEst 3
