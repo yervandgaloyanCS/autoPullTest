@@ -42,7 +42,7 @@ jobs:
         env:
           SLACK_CHANNEL: backend_portfolio_git
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'Branch "dev" merge conflict.'
+          SLACK_MESSAGE: 'Branch "dev" merge conflict. Please merge manually.'
           SLACK_TITLE: ${{github.repository}}
           SLACK_USERNAME: AutoPull
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
