@@ -11,12 +11,11 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Pull the change from master
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
-          TOKEN: ${{ secrets.TOKEN }}
+      - uses: actions/checkout@v3
+        with:
+          ref: 'dev'
+          
+      - name: Pull the change from main
         run: | 
           git pull origin main
-          git push
+          git push origin dev
