@@ -17,6 +17,6 @@ jobs:
           
       - name: Pull the change from main
         run: | 
-          git pull origin dev
+          git pull origin dev --ff-only
           git pull origin main --rebase
           git push origin dev
