@@ -24,5 +24,26 @@ jobs:
           git fetch
           git switch dev
           git pull
-          git pull origin -s recursive -X theirs main --no-rebase --allow-unrelated-histories
+          git pull origin main --no-rebase --allow-unrelated-histories
           git push 
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: job.status == 'success'
+        env:
+          SLACK_CHANNEL: backend_portfolio_git
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'Branch "dev" merged successfully.'
+          SLACK_TITLE: ${{github.repository}}
+          SLACK_USERNAME: AutoPull
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: job.status == 'failure'
+        env:
+          SLACK_CHANNEL: backend_portfolio_git
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'Branch "dev" merge conflict.'
+          SLACK_TITLE: ${{github.repository}}
+          SLACK_USERNAME: AutoPull
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
