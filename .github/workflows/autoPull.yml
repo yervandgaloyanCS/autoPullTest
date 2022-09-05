@@ -20,5 +20,5 @@ jobs:
           git fetch
           git switch dev
           git pull
-          git pull origin main --no-rebase
+          git pull origin main --no-rebase --allow-unrelated-histories
           git push 
