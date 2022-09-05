@@ -25,5 +25,5 @@ jobs:
           git fetch
           git switch dev
           git pull
-          git pull origin -s recursive -X theirs main
+          git pull origin -s recursive -X theirs main --no-rebase
           git push 
