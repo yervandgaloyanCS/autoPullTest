@@ -9,41 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: dev
-      - name: Config git creds
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions@coinstats.app"
-          
-      - name: Pull the changes from main
-        run: | 
-          git fetch
-          git switch dev
-          git pull
-          git pull origin main --no-rebase --allow-unrelated-histories
-          git push 
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        if: ${{ success() }}
-        env:
-          SLACK_CHANNEL: backend_portfolio_git
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'Branch "dev" merged successfully.'
-          SLACK_TITLE: ${{github.repository}}
-          SLACK_USERNAME: AutoPull
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        if: ${{ failure() }}
-        env:
-          SLACK_CHANNEL: backend_portfolio_git
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'Branch "dev" merge conflict. Please merge manually.'
-          SLACK_TITLE: ${{github.repository}}
-          SLACK_USERNAME: AutoPull
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-
+      - name: github.base_ref
+        run: echo "github.base_ref"
+        
+      - name: github.base_ref
+        run: echo "github.head_ref"
