@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: mdecoleman/pr-branch-name@1.2.0
-        id: vars
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo ${{ steps.vars.outputs.branch }}
+      - name: Dump GitHub context
+        run: echo "$GITHUB_REF_NAME"
+      
