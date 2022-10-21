@@ -12,7 +12,7 @@ jobs:
     
     steps:
       - name: github.base_ref
-        run: echo "github.base_ref"
+        run: echo ${{ github.base_ref }}
         
-      - name: github.base_ref
-        run: echo "github.head_ref"
+      - name: github.head_ref
+        run: echo ${{ github.head_ref }}
